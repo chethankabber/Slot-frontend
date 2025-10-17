@@ -133,7 +133,7 @@ const Register = () => {
                 </Button>
 
                 <div className="auth-footer-modern">
-                  <p>
+                  <p className="text-white">
                     Already have an account?{' '}
                     <Link to="/login" className="auth-link">
                       Login here

@@ -1,0 +1,390 @@
+/* ===== MAIN APP STRUCTURE ===== */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  min-height: calc(100vh - 150px);
+}
+
+/* ===== BOX VIEW STYLES ===== */
+.box-view-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.box-tabs-header {
+  background: white;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 1.5rem;
+}
+
+.box-nav-pills {
+  gap: 1rem;
+}
+
+.box-nav-link {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.box-nav-link:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== SLOT GRID  ===== */
+.slot-grid-v2 {
+  animation: fadeIn 0.5s ease;
+}
+
+.summary-alert {
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.summary-badge {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.occupancy-percentage {
+  font-size: 0.95rem;
+}
+
+/* ===== SLOT CARD  ===== */
+.slot-status-icon {
+  margin-bottom: 0.5rem;
+}
+
+.slot-click-hint {
+  color: #4caf50;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* ===== LEGEND ===== */
+.legend-section {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.legend-title {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.legend-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 2px solid;
+}
+
+.legend-available {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-color: #4caf50;
+}
+
+.legend-occupied {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-color: #f44336;
+}
+
+.legend-icon {
+  font-size: 1.5rem;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-header-modern {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1.5rem;
+}
+
+.modal-header-modern .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.switch-modern {
+  font-size: 1.1rem;
+}
+
+.detail-row {
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.detail-row:hover {
+  background: #f7fafc;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.detail-value {
+  color: #2d3748;
+}
+
+.detail-badge {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.btn-modal-action {
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-modal-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== SEARCH CARD ===== */
+.search-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search-input-group {
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-input-group:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.search-icon {
+  background: white;
+  border: none;
+  color: #a0aec0;
+}
+
+.search-input-modern {
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.search-input-modern:focus {
+  box-shadow: none;
+}
+
+/* ===== USERS CARD ===== */
+.users-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.users-tabs-header {
+  background: white;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 1.5rem;
+}
+
+.users-nav-pills {
+  gap: 1rem;
+}
+
+.users-nav-link {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: #4a5568;
+  background: #f7fafc;
+}
+
+.users-nav-link:hover {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.users-nav-link.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.approved-user-card {
+  border-left: 4px solid #48bb78;
+}
+
+/* ===== SUMMARY CARD ANALYTICS ===== */
+.summary-card-analytics {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.summary-card-analytics:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.summary-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.summary-card-analytics h3 {
+  font-size: 1rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+}
+
+.summary-card-analytics h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .box-nav-pills {
+    flex-direction: column;
+  }
+
+  .box-nav-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .summary-badges {
+    justify-content: center;
+  }
+
+  .legend-section {
+    padding: 1rem;
+  }
+
+  .user-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .approval-buttons {
+    width: 100%;
+  }
+
+  .btn-approve,
+  .btn-reject {
+    flex: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .slot-card-v2 {
+    padding: 0.75rem;
+  }
+
+  .slot-id-v2 {
+    font-size: 0.9rem;
+  }
+
+  .slot-item-name {
+    font-size: 0.8rem;
+  }
+
+  .summary-alert {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .comparison-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== TOASTIFY CUSTOMIZATION ===== */
+.Toastify__toast {
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+
+.log_bg{
+  background: linear-gradient(135deg, #2a2a2c 0%, #534b5b 100%)important;
+}

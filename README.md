@@ -68,3 +68,79 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<Row className="g-4 mb-4">
+        <Col>
+          <Card className="box-card">
+            <Card.Header className="activity-header">
+              <h5 className="mb-0">Monthly Utilization Trend</h5>
+            </Card.Header>
+            <Card.Body>
+              <div className="comparison-container">
+                {monthlyData.map((item, index) => (
+                  <div key={index} className="comparison-item">
+                    <div className="comparison-header">
+                      <span className="comparison-label">{item.month}</span>
+                      <span className="comparison-value">{item.value}%</span>
+                    </div>
+                    <div className="comparison-bar-container">
+                      <div 
+                        className="comparison-bar comparison-bar-blue"
+                        style={{ width: `${item.value}%` }}
+                      >
+                        {item.value}%
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+//////////////////////////////////////////////////////////////////////
+          footer
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaGithub, FaLinkedin, FaTwitter, FaHeart } from 'react-icons/fa';
+
+const Footer = () => {
+  return (
+    <footer className="modern-footer">
+      <Container>
+        <Row className="align-items-center py-4">
+          <Col md={4} className="text-center text-md-start mb-3 mb-md-0">
+            <h5 className="footer-brand">GANDEEVAN TECHNOLOGIES</h5>
+            <p className="footer-tagline">GANDEEVAN TECHNOLOGIES</p>
+          </Col>
+          
+          <Col md={4} className="text-center mb-3 mb-md-0">
+            <p className="footer-copyright mb-0">
+              © {new Date().getFullYear()} All Rights Reserved
+            </p>
+            <small className="footer-made">
+              Made with <FaHeart className="text-danger pulse-icon" /> by Your Team
+            </small>
+          </Col>
+          
+          <Col md={4} className="text-center text-md-end">
+            <div className="social-links">
+              <a href="#" className="social-icon">
+                <FaGithub />
+              </a>
+              <a href="#" className="social-icon">
+                <FaLinkedin />
+              </a>
+              <a href="#" className="social-icon">
+                <FaTwitter />
+              </a>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </footer>
+  );
+};
+
+export default Footer;               

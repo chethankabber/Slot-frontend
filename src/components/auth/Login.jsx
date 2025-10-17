@@ -98,7 +98,7 @@ const Login = () => {
                 </Button>
 
                 <div className="auth-footer-modern">
-                  <p>
+                  <p className="text-white">
                     Don't have an account?{' '}
                     <Link to="/register" className="auth-link">
                       Register here

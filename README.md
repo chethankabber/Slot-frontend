@@ -70,77 +70,110 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-<Row className="g-4 mb-4">
-        <Col>
-          <Card className="box-card">
-            <Card.Header className="activity-header">
-              <h5 className="mb-0">Monthly Utilization Trend</h5>
-            </Card.Header>
-            <Card.Body>
-              <div className="comparison-container">
-                {monthlyData.map((item, index) => (
-                  <div key={index} className="comparison-item">
-                    <div className="comparison-header">
-                      <span className="comparison-label">{item.month}</span>
-                      <span className="comparison-value">{item.value}%</span>
-                    </div>
-                    <div className="comparison-bar-container">
-                      <div 
-                        className="comparison-bar comparison-bar-blue"
-                        style={{ width: `${item.value}%` }}
-                      >
-                        {item.value}%
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-//////////////////////////////////////////////////////////////////////
-          footer
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { FaGithub, FaLinkedin, FaTwitter, FaHeart } from 'react-icons/fa';
+ Slot-management
 
-const Footer = () => {
-  return (
-    <footer className="modern-footer">
-      <Container>
-        <Row className="align-items-center py-4">
-          <Col md={4} className="text-center text-md-start mb-3 mb-md-0">
-            <h5 className="footer-brand">GANDEEVAN TECHNOLOGIES</h5>
-            <p className="footer-tagline">GANDEEVAN TECHNOLOGIES</p>
-          </Col>
-          
-          <Col md={4} className="text-center mb-3 mb-md-0">
-            <p className="footer-copyright mb-0">
-              © {new Date().getFullYear()} All Rights Reserved
-            </p>
-            <small className="footer-made">
-              Made with <FaHeart className="text-danger pulse-icon" /> by Your Team
-            </small>
-          </Col>
-          
-          <Col md={4} className="text-center text-md-end">
-            <div className="social-links">
-              <a href="#" className="social-icon">
-                <FaGithub />
-              </a>
-              <a href="#" className="social-icon">
-                <FaLinkedin />
-              </a>
-              <a href="#" className="social-icon">
-                <FaTwitter />
-              </a>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </footer>
-  );
-};
+A React + Bootstrap UI for managing storage boxes and slots. This repository contains a front-end prototype that demonstrates user authentication (mocked), role-based routing, slot/box management UI, audit history, analytics, and a modern theme.
 
-export default Footer;               
+---
+
+## Features
+
+- Role-based dashboards for `admin`, `manager`, and `user`.
+- Mock authentication with quick-login credentials.
+- Box & slot listing, add/view item modal, status indicators (available / occupied / returnable).
+- User registration demo and admin approval flow UI.
+- Activity history timeline with filtering and export action.
+- Analytics and summary cards.
+- Theme context that persists theme choice to localStorage.
+- Responsive layout using React-Bootstrap components.
+
+---
+
+
+Open http://localhost:3000
+The app entry is src/index.js. Routes and role-based dashboard selection live in src/App.js — see the DashboardRouter helper.
+
+Mock credentials
+Authentication is mocked in the context provider at AuthProvider. Use these credentials for quick testing:
+
+Admin: admin@slot.com / password123
+Manager: manager@slot.com / password123
+User: user@slot.com / password123
+The mock login stores a token and user in localStorage and navigates to /dashboard.
+
+See: src/context/AuthContext.jsx
+
+Main concepts & architecture
+Context providers
+
+Authentication: AuthProvider provides login, logout, register, hasRole, and user.
+Theming: ThemeProvider toggles and persists dark/light mode.
+Routing
+
+App routes and protected routes are declared in src/App.js.
+Role-based protection uses ProtectedRoute.
+Components
+
+Global layout: src/components/common/Navbar.jsx, src/components/common/Footer.jsx
+Dashboards:
+Admin: src/components/dashboard/AdminDashboard.jsx
+Manager: src/components/dashboard/ManagerDashboard.jsx
+User: src/components/dashboard/UserDashboard.jsx
+Slots:
+Box view: src/components/slots/BoxView.jsx
+Slot grid: src/components/slots/SlotGrid.jsx
+Slot card: src/components/slots/SlotCard.jsx
+Slot modal: src/components/slots/SlotModal.jsx
+Users & Admin:
+User management UI: src/components/users/UserManagement.jsx
+History & Analytics:
+History timeline: src/components/history/HistoryLog.jsx
+Analytics: src/components/analytics/Analytics.jsx
+Styling
+
+Global and component styles are in src/styles/App.css and src/styles/modern-theme.css.
+Bootstrap v5 is used; components are from react-bootstrap.
+Project structure (important files)
+src/index.js — React entrypoint.
+src/App.js — Router, layout, Toast container, Theme/Auth providers.
+src/context/AuthContext.jsx — Mock auth.
+src/context/ThemeContext.jsx — Theme persistence.
+src/components/common/Navbar.jsx — Top nav (renders only when logged in).
+src/components/common/ProtectedRoute.jsx — Role protection.
+src/components/slots/ — Box & slot UI.
+src/components/users/UserManagement.jsx — Admin user approvals.
+src/components/history/HistoryLog.jsx — Activity timeline.
+src/components/analytics/Analytics.jsx — Summary & charts demo.
+src/styles/modern-theme.css — Theme and component visuals.
+public/index.html — HTML template.
+How the code works (high level)
+Authentication:
+
+login in AuthProvider checks the provided email against a small mock user map and validates a fixed password password123. On success it saves token and user to localStorage and navigates to /dashboard.
+logout clears localStorage and navigates to /login.
+Routing:
+
+Public routes: /login, /register.
+Protected routes: /dashboard, /boxes, /users (admin only), /history, /analytics (admin/manager).
+ProtectedRoute inspects the user from AuthProvider and the allowedRoles prop and either renders children or shows an access denied message / redirect.
+Slots:
+
+BoxView.jsx generates mock slots for each box and delegates rendering to SlotGrid.jsx.
+Clicking a slot opens SlotModal.jsx in add or details mode depending on slot status.
+Users:
+
+UserManagement.jsx holds local arrays for pendingUsers and approvedUsers. Approve/Reject actions update local state and show toast notifications.
+History & Analytics:
+
+Each is a UI-only demo with mocked data and filtering. The export action triggers a toast.
+Development notes & suggestions
+Replace mock auth with real API endpoints and proper token handling.
+Persist boxes/slots/users to a backend and fetch in components instead of generating mock data.
+Add unit/integration tests for context providers and major components.
+Consider central state management (e.g., React Query / Redux) when adding server data.
+Accessibility: verify ARIA attributes for modals and interactive controls.
+Contributing
+Fork and branch.
+Follow existing code style (React + JSX + React-Bootstrap).
+Run npm install and npm start to test changes.
+Open a PR with a concise description.                       
